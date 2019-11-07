@@ -14,7 +14,7 @@ export class ManagerService {
 
   constructor(private http: HttpClient) { }
 
-  url: string = "http://localhost:4201/";
+  url: string = "https://stormy-cliffs-10563.herokuapp.com/";
   users;
   courses;
   request;
