@@ -1,0 +1,40 @@
+<div class="container" style="padding-top: 100px">
+    
+    <form action="" class="row blue-grey darken-4 white-text" style="opacity:0.9;padding:30px; width: 700px">
+        <h3 align="center">Enter Course Details</h3>
+        <div class="input-field col s10 offset-s1">
+            <i class="material-icons prefix">book</i>
+            <input required [minlength]="minLength" [maxlength]="maxLength" #coursename="ngModel" ngModel name="course_name"
+                id="course_name" type="text" class="validate">
+            <label for="course_name">Course title</label>
+            <span class="helper-text " data-error="Min. 3 characters"></span>
+        </div>
+        <div class="input-field col s10 offset-s1">
+            <i class="material-icons prefix">date_range</i>
+            <input required #date="ngModel" ngModel name="course_date"
+                id="start_date" type="date" class="validate">
+            <label for="start_date">Starting date</label>
+            <span class="helper-text " data-error="Invalid"></span>
+        </div>
+        <div class="input-field col s5 offset-s1">
+            <i class="material-icons prefix">access_time</i>
+            <input required min="0" max="24" #duration="ngModel" ngModel
+                name="duration" id="duration" type="number" class="validate">
+            <label for="duration">Duration (months)</label>
+            <span class="helper-text " data-error="0 - 24"></span>
+        </div>
+        <div class="input-field col s5">
+            <i class="material-icons prefix">local_offer</i>
+            <input required max="50000" min="0" #fee="ngModel" ngModel name="fee" id="fee" type="number"
+                class="validate">
+            <label for="fee">Course fee (&#8377;)</label>
+            <span class="helper-text " data-error="&#8377;0 - &#8377;50,000"></span>
+        </div>
+        <div class="col s10 offset-s1">
+                <a href="#confirm-send" [ngClass]="classes(coursename, date, duration, fee)"
+                (click)="prepare(coursename, date, duration, fee)">Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </form>
+</div>

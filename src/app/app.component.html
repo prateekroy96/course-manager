@@ -1,21 +1,79 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div>
+  <!-- Navbar -->
+  <ul id="dropuser" class="dropdown-content">
+    <li><a href="#" (click)="toggle(1)">Add User</a></li>
+    <li><a href="#" (click)="toggle(2)">List User</a></li>
+  </ul>
+  <ul id="dropcourse" class="dropdown-content">
+    <li><a href="#" (click)="toggle(3)">Add Course</a></li>
+    <li><a href="#" (click)="toggle(4)">List Course</a></li>
+  </ul>
+  <div class="navbar-fixed" style="height:8vh">
+    <nav>
+      <div class="nav-wrapper" style="background-color: #232126">
+        <a href="#" class="brand-logo" style="padding-left: 50px">{{head}}</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#" (click)="toggle(0)">Home</a></li>
+          <li><a class="dropdown-trigger" href="#" data-target="dropuser">User<i
+                class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-trigger" href="#" data-target="dropcourse">Course<i
+                class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a href="#" (click)="toggle(5)">Allotment</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- Content -->
+  <div [ngSwitch]="page">
+    <div *ngSwitchCase="0">
+      <!-- Home -->
+      <div class="row" style="padding-left: 100px;padding-right: 100px;height:85vh">
+        <div class="col s6">
+          <h1 style="color: #232126;font-size: 105px;">Course<br> Manager</h1>
+        </div>
+  
+      </div>
+    </div>
+    <div *ngSwitchCase="1">
+      <app-user-form></app-user-form>
+    </div>
+    <div *ngSwitchCase="2">
+      <app-user-list></app-user-list>
+    </div>
+    <div *ngSwitchCase="3">
+      <app-course-form></app-course-form>
+    </div>
+    <div *ngSwitchCase="4">
+      <app-course-list></app-course-list>
+    </div>
+    <div *ngSwitchCase="5">
+      <app-allotment></app-allotment>
+    </div>
+  </div>
+  <!-- Confirmation -->
 
-<router-outlet></router-outlet>
+  <div id="confirm-del" class="modal">
+    <div class="modal-content center">
+      <h4>Confirm Action</h4>
+
+      <div style="padding: 20px">
+        Do you really want to delete the record? The process cannot be undone.
+      </div>
+      <input type="submit" value="Accept" class="btn btn-large modal-close" (click)="submit()" style="margin:20px">
+      <input type="submit" value="Decline" class="btn btn-large modal-close blue-grey darken-3" style="margin:20px">
+    </div>
+  </div>
+
+  <div id="confirm-send" class="modal">
+    <div class="modal-content center">
+      <h4>Confirm Action</h4>
+
+      <div style="padding: 20px">
+        Are you sure the data is correct?
+      </div>
+      <input type="submit" value="Accept" class="btn btn-large modal-close" (click)="submit()" style="margin:20px">
+      <input type="submit" value="Decline" class="btn btn-large modal-close blue-grey darken-3" style="margin:20px">
+    </div>
+  </div>
+
+</div>

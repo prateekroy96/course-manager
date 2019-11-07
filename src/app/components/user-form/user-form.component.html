@@ -1,0 +1,44 @@
+<div class="container" style="padding-top: 100px">
+    
+    <form action="" class="row blue-grey darken-4 white-text" style="opacity:0.9;padding:30px; width: 700px">
+        <h3 align="center">Enter User Details</h3>
+        <div class="input-field col s10 offset-s1">
+            <i class="material-icons prefix">account_circle</i>
+            <input required [minlength]="minLength" [maxlength]="maxLength" #username="ngModel" ngModel name="username"
+                id="user_name" type="text" class="validate" >
+            <label for="user_name">Name</label>
+            <span class="helper-text " data-error="Min. 3 characters"></span>
+        </div>
+        <div class="input-field col s10 offset-s1">
+            <i class="material-icons prefix">school</i>
+            <input required [minlength]="minLength" [maxlength]="maxLength" #college="ngModel" ngModel name="college"
+                id="college_name" type="text" class="validate">
+            <label for="college_name">College Name</label>
+            <span class="helper-text " data-error="Min. 3 characters"></span>
+        </div>
+        <div class="input-field col s5 offset-s1">
+            <i class="material-icons prefix">phone</i>
+            <input required pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" maxlength="10" #phone="ngModel"
+                ngModel name="phone" id="number" type="text" class="validate">
+            <label for="number">Phone No.</label>
+            <span class="helper-text " data-error="Invalid"></span>
+        </div>
+        <div class="input-field col s5">
+            <i class="material-icons prefix">date_range</i>
+            <input required max="2019" min="1950" #year="ngModel" ngModel name="year" id="year" type="number"
+                class="validate">
+            <label for="year">Graduation year</label>
+            <span class="helper-text " data-error="1950 - 2019"></span>
+        </div>
+        <div class="col s10 offset-s1">
+            <a href="#confirm-send" [ngClass]="classes(username, college, phone, year)"
+                (click)="prepare(username, college, phone, year)">Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </form>
+</div>
+
+<!--
+    
+-->

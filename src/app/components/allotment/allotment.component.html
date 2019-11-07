@@ -1,0 +1,38 @@
+<div>
+    <div class="row blue-grey darken-4 white-text" style="opacity:0.9;margin:300px;margin-top:10px;margin-bottom:10px;padding:20px">
+        <h3 align="center">Allot Courses</h3>
+        <div class="col s6 " style="margin-bottom:20px;border-right: 1px solid #e0e0e0;padding:40px;padding-top:0px">
+            <h5 align="center" style="border-bottom: 1px solid #e0e0e0;padding-bottom: 20px">Users</h5>
+            <div style="overflow: auto;height:50vh">
+                <p *ngFor="let user of users; index as i">
+                    <label>
+                        <input name="group1" type="radio" [value]="user.id" (change)="userActive(user)" />
+                        <span>{{user.name_of_person}}</span><br>
+                        <span style="padding-left: 35px">{{user.courses.length}} Registered Courses</span>
+                    </label>
+                </p>
+            </div>
+
+        </div>
+        <div class="col s6 " style="margin-bottom:20px;padding:40px;padding-top:0px">
+            <h5 align="center" style="border-bottom: 1px solid #e0e0e0;padding-bottom: 20px">Courses</h5>
+            <div style="overflow: auto;height:50vh">
+                <p *ngFor="let course of courses;index as j">
+                    <label>
+                        <input #checkB type="checkbox" class="filled-in" [value]="course.id"
+                            [disabled]="isDisabled(course)" (change)="check(j,checkB.checked)" />
+                        <span>{{course.name_of_course}}</span><br>
+                        <span
+                            style="padding-left: 35px">{{isDisabled(course)? "Already Registered" : "Available"}}</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+        <div class="center" style="margin-top:20px">
+            <a href="#confirm-send" [ngClass]="classes()" (click)="prepare()">Allot
+            </a>
+        </div>
+    </div>
+
+
+</div>

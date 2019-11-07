@@ -1,0 +1,34 @@
+<div>
+    <ul class="collapsible white">
+        <ul class="collection with-header">
+            <li class="collection-header">
+                <h4>{{ course.name_of_course}}
+                    <a href="#confirm-del" class="secondary-content modal-trigger" (click)="prepare()">
+                        <i class="small material-icons">delete</i>
+                    </a>
+                </h4>
+
+            </li>
+            <li class="collection-item"><span style="font-weight: bold;;display: inline-block;width: 200px">
+                    Course Duration:</span><span>{{course.course_duration}} month(s)</span></li>
+            <li class="collection-item"><span style="font-weight: bold;;display: inline-block;width: 200px">
+                    Course Fee:</span><span>&#8377; {{course.course_fee}}</span></li>
+            <li class="collection-item" style="border-bottom: 1px solid #e0e0e0;"><span
+                    style="font-weight: bold;;display: inline-block;width: 200px">
+                    Start Date:</span><span>{{course.start_date}}</span></li>
+        </ul>
+        <li>
+            <div class="collapsible-header" style="padding-left: 30px"><span
+                    style="font-weight: bold;;display: inline-block;width: 200px">Enrolled Users:</span>
+                <span>{{course.users.length}}</span>
+            </div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <app-user-subitem *ngFor="let user of course.users; index as i" [user]="user" [index]="i"
+                        [courseid]="course.id">
+                    </app-user-subitem>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
